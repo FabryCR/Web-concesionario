@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "Home page";
+}
+
+@*Carrusel de Inicio*@
+<section class="hero-section">
+    <div class="hero-items owl-carousel">
+        <div class="single-hero-items set-bg" data-setbg="/template/img/hero-1.png">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <span></span>
+                        <h1 style="color:white;">AMIGABLE CON TU VIDA</h1>
+                        <a href="@Url.Action("EnVenta","Vehiculo" )" class="primary-btn">Comprar Ahora</a>
+                    </div>
+                </div>
+                <div class="off-card">
+                    <h2>NUEVO<span>✓</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="single-hero-items set-bg" data-setbg="/template/img/hero-2.png">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <h1 style="color:white;">SERVICIO A TU PUERTA</h1>
+                        <a href="@Url.Action("EnVenta","Vehiculo" )" class="primary-btn">Comprar Ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*Secciones de autos*@
+<div class="banner-section spad">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="single-banner">
+                    <img src="~/template/img/card-1.jpg" alt="" />
+                    <div class="inner-text">
+                        <h4>Eléctricos</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-banner">
+                    <img src="~/template/img/card-2.jpg" alt="" />
+                    <div class="inner-text">
+                        <h4>SUV's</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-banner">
+                    <img src="~/template/img/card-3.jpg" alt="" />
+                    <div class="inner-text">
+                        <h4>DEPORTIVOS</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*Ventajas del negocio*@
+<section>
+    <div class="benefit-items">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="single-benefit">
+                    <div class="sb-icon">
+                        <img src="~/template/img/icon-1.png" alt="" />
+                    </div>
+                    <div class="sb-text">
+                        <h6>Entregas Seguras</h6>
+                        <p>Seguridad en las entregas programadas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-benefit">
+                    <div class="sb-icon">
+                        <img src="~/template/img/icon-2.png" alt="" />
+                    </div>
+                    <div class="sb-text">
+                        <h6>Entregas Puntuales</h6>
+                        <p>Para su mayor comodidad</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="single-benefit">
+                    <div class="sb-icon">
+                        <img src="~/template/img/icon-3.png" alt="" />
+                    </div>
+                    <div class="sb-text">
+                        <h6>Pagos Seguros</h6>
+                        <p>Seguridad total en su pago en línea</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

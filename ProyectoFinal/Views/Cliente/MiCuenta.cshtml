@@ -1,0 +1,50 @@
+﻿@model ProyectoFinal.Entities.UsuarioObj
+
+@{
+    ViewBag.Title = "Mi cuenta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container">
+        <div><h3>Mis Datos</h3></div>
+        <br />
+        <div class="d-flex justify-content-center h-100">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre de Usuario</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Cédula</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.NombUsuario</td>
+                        <td>@Model.Nombre</td>
+                        <td>@Model.Apellido</td>
+                        <td>@Model.Identificacion</td>
+                        <td>@Model.Correo</td>
+                        <td>@Model.Telefono</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- REQUIRED SCRIPTS -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+
+

@@ -1,0 +1,52 @@
+﻿@model ProyectoFinal.Entities.TiqueteObj
+
+@{
+    ViewBag.Title = "Generar Tiquete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container">
+        <div>
+            @using (Html.BeginForm("AddTiquete", "Tiquete", FormMethod.Post, new { id = "form" }))
+            {
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>Usuario</label>
+                            @Html.DropDownListFor(Model => Model.IdUsuario, ViewBag.Usuarios as List<SelectListItem>, new { @Class = "form-control" })
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Vehículo</label>
+                            @Html.DropDownListFor(Model => Model.IdVehiculo, ViewBag.Vehiculos as List<SelectListItem>, new { @Class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>Total en dólares</label>
+                            @Html.TextBoxFor(Model => Model.Total, new { @Class = "form-control numeric", @id = "total", required = "required" })
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-secondary">Generar</button>
+                </form>
+            }
+        </div>
+    </div>
+
+    <!-- REQUIRED SCRIPTS -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/JsScripts/ValidarCampos.js"></script>
+</body>
+</html>
+
+
+
+

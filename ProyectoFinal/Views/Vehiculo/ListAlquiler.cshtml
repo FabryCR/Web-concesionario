@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ProyectoFinal.Entities.VehiculoObj>
+
+@{
+    ViewBag.Title = "Vehículos en Alquiler";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .icons {
+            margin: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div><h3>Vehículos en Alquiler</h3></div>
+        <br />
+        <div class="d-flex justify-content-center h-100">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Color</th>
+                        <th>Año</th>
+                        <th>Placa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a class="edit icons" href="javascript:"><i class="fas fa-pen"></i></a>
+                                |
+                                <a class="delete icons" href="javascript:"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                            <td>@item.Marca</td>
+                            <td>@item.Modelo</td>
+                            <td>@item.Color</td>
+                            <td>@item.Anio</td>
+                            <td>@item.Placa</td>
+                            <td style="display:none;">@item.IdVehiculo</td>
+                        </tr>
+                    }
+                    <tr hidden id="boxes">
+                        <td>
+                            <a href="javascript:" class="icons" id="aUpdate"><i class="fas fa-check"></i></a>
+                            |
+                            <a href="javascript:" class="icons" id="aCancel"><i class="fas fa-times"></i></a>
+                        </td>
+                        <td><input id="marca" name="marca" /></td>
+                        <td><input id="modelo" name="modelo" /></td>
+                        <td><input id="color" name="color" /></td>
+                        <td><input id="anio" name="anio" type="number" /></td>
+                        <td><input id="placa" name="placa" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            @Html.ActionLink("Insertar Vehículo", "AddVehiculo", "Vehiculo", new { @class = "btn btn-outline-secondary" })
+        </div>
+    </div>
+
+    <!-- REQUIRED SCRIPTS -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/JsScripts/TableAlquiler.js"></script>
+</body>
+</html>
+
+

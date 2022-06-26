@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>FlipCars</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/template/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/template/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/template/css/themify-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/template/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/template/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/template/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/template/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/template/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/template/css/style.css" type="text/css">
+
+    <!--Js-->
+    <script src="~/template/js/jquery-3.3.1.min.js"></script>
+    <script src="~/template/js/bootstrap.min.js"></script>
+    <script src="~/template/js/jquery-ui.min.js"></script>
+    <script src="~/template/js/jquery.countdown.min.js"></script>
+    <script src="~/template/js/jquery.nice-select.min.js"></script>
+    <script src="~/template/js/jquery.zoom.min.js"></script>
+    <script src="~/template/js/jquery.dd.min.js"></script>
+    <script src="~/template/js/jquery.slicknav.js"></script>
+    <script src="~/template/js/owl.carousel.min.js"></script>
+    <script src="~/template/js/main.js"></script>
+
+</head>
+<body>
+    @*Header*@
+    <header class="header-section">
+        <div class="header-top">
+            <div class="container">
+                <div class="ht-left">
+                    <div class="mail-service">
+                        <i class=" fa fa-envelope"></i>
+                        info@flipcars.com
+                    </div>
+                    <div class="phone-service">
+                        <i class=" fa fa-phone"></i>
+                        +506 0808-2020
+                    </div>
+                </div>
+                <div class="ht-right">
+                    @if (Session["Rol"] != null)
+                    {
+                        <a href="@Url.Action("MiCuenta","Cliente" )" class="login-panel"><i class="fa fa-user"></i>Mi Cuenta</a>
+                        <a href="@Url.Action("LogOff","Home" )" style="margin-right:12px;" class="login-panel"><i class="fa fa-times"></i>Cerrar Sesión</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Login","Home" )" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                    }
+                    <div class="top-social">
+                        <a href="#"><i class="ti-facebook"></i></a>
+                        <a href="#"><i class="ti-twitter-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="inner-header">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2">
+                        <div class="logo">
+                            <a href="@Url.Action("Index","Home" )">
+                                FlipCars
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <div class="advanced-search">
+                            <button type="button" class="category-btn">Categorías</button>
+                            <div class="input-group">
+                                <input type="text" placeholder="¿Qué andas buscando?" />
+                                <button type="button"><i class="ti-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 text-right col-md-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-item">
+            <div class="container">
+                <div class="nav-depart">
+                    <div class="depart-btn">
+                        <i class="ti-menu"></i>
+                        <span>Todos los autos</span>
+                        <ul class="depart-hover">
+                            <li><a href="@Url.Action("EnVenta","Vehiculo" )">Venta</a></li>
+                            <li><a href="@Url.Action("EnAlquiler","Vehiculo" )">Alquiler</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <nav class="nav-menu mobile-menu">
+                    <ul>
+                        <li class="active"><a href="#">Inicio</a></li>
+                        <li>
+                            <a href="@Url.Action("EnVenta","Vehiculo" )">Comprar</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("EnAlquiler","Vehiculo" )">Alquilar</a>
+                        </li>
+                        <li><a href="@Url.Action("Contact","Home")">Contacto</a></li>
+                        @if (Session["Rol"] != null)
+                        {
+                            if (Session["Rol"].ToString() == "1")
+                            {
+                                <li><a href="@Url.Action("AdminIndex","Home")">Administración</a></li>
+                            }
+                        }
+                    </ul>
+                </nav>
+                <div id="mobile-menu-wrap"></div>
+            </div>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    @*Logos de Partners*@
+    <div class="partner-logo">
+        <div class="container">
+            <div class="logo-carousel owl-carousel">
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="~/template/img/car_audi.png" alt="" />
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="~/template/img/car_mitsubishi.png" alt="" />
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="~/template/img/car_hyundai.png" alt="" />
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="~/template/img/car_chevrolet.png" alt="" />
+                    </div>
+                </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="~/template/img/car_nissan.png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Footer con info adicional*@
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer-left">
+                        <div class="footer-logo">
+                            <a href="@Url.Action("Index","Home" )">FlipCars S.A.</a>
+                        </div>
+                        <ul>
+                            <li>Dirección: La Sabana, San José</li>
+                            <li>Teléfono: +506 0808-2020</li>
+                            <li>Email: info@flipcars.com</li>
+                        </ul>
+                        <div class="footer-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1">
+                    <div class="footer-widget">
+                        <h5>Información</h5>
+                        <ul>
+                            <li><a href="@Url.Action("Index","Home" )">Sobre nosotros</a></li>
+                            <li><a href="@Url.Action("Contact","Home" )">Contacto</a></li>
+                            <li><a href="@Url.Action("MiCuenta","Cliente" )">Mi Cuenta</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="newslatter-item">
+                        <h5>Únete a nuestro boletín</h5>
+                        <p>Déjanos tu correo electrónico para enterarte de nuevas promociones</p>
+                        <form action="#" class="subscribe-form">
+                            <input type="text" placeholder="Ingresa tu correo" />
+                            <button type="button">Suscríbete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*Copyright bla bla*@
+        <div class="copyright-reserved">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright-text">
+
+                            Copyright &copy;2022 Todos los derechos reservados | FlipCars Sociedad Anónima
+
+                        </div>
+                        <div class="payment-pic">
+                            <img src="~/template/img/payment-method.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

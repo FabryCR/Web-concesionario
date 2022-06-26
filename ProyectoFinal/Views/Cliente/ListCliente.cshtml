@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ProyectoFinal.Entities.UsuarioObj>
+
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .icons {
+            margin: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div><h3>Gestión de Clientes</h3></div>
+        <br />
+        <div class="d-flex justify-content-center h-100">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nombre de Usuario</th>
+                        <th>Cédula</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a class="edit icons" href="javascript:"><i class="fas fa-pen"></i></a>
+                                |
+                                <a class="delete icons" href="javascript:"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                            <td>@item.NombUsuario</td>
+                            <td>@item.Identificacion</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.Apellido</td>
+                            <td>@item.Correo</td>
+                            <td>@item.Telefono</td>
+                            <td style="display:none;">@item.IdUsuario</td>
+                        </tr>
+                    }
+                    <tr hidden id="boxes">
+                        <td>
+                            <a href="javascript:" class="icons" id="aUpdate"><i class="fas fa-check"></i></a>
+                            |
+                            <a href="javascript:" class="icons" id="aCancel"><i class="fas fa-times"></i></a>
+                        </td>
+                        <td><input id="usuario" name="usuario" /></td>
+                        <td><input id="ide" name="ide" /></td>
+                        <td><input id="nam" name="nam" /></td>
+                        <td><input id="ape" name="ape" /></td>
+                        <td><input id="mail" name="mail" /></td>
+                        <td><input id="tel" name="tel" type="number" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- REQUIRED SCRIPTS -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/JsScripts/TableCliente.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,67 @@
+﻿@model ProyectoFinal.Entities.VehiculoObj
+
+@{
+    ViewBag.Title = "Insertar Vehículo";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container">
+        <div>
+            @using (Html.BeginForm("AddVehiculo", "Vehiculo", FormMethod.Post, new { id = "form" }))
+            {
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Marca</label>
+                        @Html.TextBoxFor(Model => Model.Marca, new { @Class = "form-control", @id = "marca", required = "required" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Modelo</label>
+                        @Html.TextBoxFor(Model => Model.Modelo, new { @Class = "form-control", @id = "modelo", required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Color</label>
+                        @Html.TextBoxFor(Model => Model.Color, new { @Class = "form-control", @id = "color", required = "required" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Placa</label>
+                        @Html.TextBoxFor(Model => Model.Placa, new { @Class = "form-control", @id = "placa", @disabled = "disabled" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Año</label>
+                        @Html.TextBoxFor(Model => Model.Anio, new { @Class = "form-control numeric", @id = "anio", required = "required" })
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Tipo</label>
+                        @Html.DropDownListFor(Model => Model.Tipo, ViewBag.Tipo as List<SelectListItem>, new { @Class = "form-control", @id = "tipo"})
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-secondary">Insertar</button>
+            </form>
+            }
+        </div>
+    </div>
+
+    <!-- REQUIRED SCRIPTS -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/JsScripts/ValidarCampos.js"></script>
+</body>
+</html>
+
+
+

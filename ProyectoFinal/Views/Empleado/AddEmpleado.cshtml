@@ -1,0 +1,70 @@
+﻿@model ProyectoFinal.Entities.UsuarioObj
+
+@{
+    ViewBag.Title = "Registrar Empleado";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container">
+        <div>
+            @using (Html.BeginForm("AddEmpleado", "Empleado", FormMethod.Post, new { id = "form" }))
+            {
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>Nombre</label>
+                            @Html.TextBoxFor(Model => Model.Nombre, new { @Class = "form-control", @id = "nombre", required = "required" })
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Apellido</label>
+                            @Html.TextBoxFor(Model => Model.Apellido, new { @Class = "form-control", @id = "apellido", required = "required" })
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Cédula</label>
+                            @Html.TextBoxFor(Model => Model.Identificacion, new { @Class = "form-control", @id = "ide", required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>Nombre de Usuario</label>
+                            @Html.TextBoxFor(Model => Model.NombUsuario, new { @Class = "form-control", @id = "usuario", required = "required" })
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Contraseña</label>
+                            @Html.TextBoxFor(Model => Model.Contra, new { @Class = "form-control", @id = "contra", required = "required" })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>Correo</label>
+                            @Html.TextBoxFor(Model => Model.Correo, new { @Class = "form-control", @id = "mail", required = "required" })
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Teléfono</label>
+                            @Html.TextBoxFor(Model => Model.Telefono, new { @Class = "form-control numeric", @id = "telef", required = "required" })
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-secondary">Registrar</button>
+                </form>
+            }
+        </div>
+    </div>
+
+    <!-- REQUIRED SCRIPTS -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/JsScripts/ValidarCampos.js"></script>
+</body>
+</html>
+
+
+
+

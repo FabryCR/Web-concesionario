@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ProyectoFinal.Entities.TiqueteObj>
+
+@{
+    ViewBag.Title = "Tiquetes";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        .icons {
+            margin: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div><h3>Gestión de Tiquetes</h3></div>
+        <br />
+        <div class="d-flex justify-content-center h-100">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Código Tiquete</th>
+                        <th>Usuario</th>
+                        <th>Vehiculo</th>
+                        <th>Fecha Tiquete</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a class="delete icons" href="javascript:"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                            <td>@item.IdTiquete</td>
+                            <td>@item.NombreUsuario</td>
+                            <td>@item.Vehiculo</td>
+                            <td>@item.FechaTiquete</td>
+                            <td>@item.Total</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div>
+            @Html.ActionLink("Generar Tíquete", "AddTiquete", "Tiquete", new { @class = "btn btn-outline-secondary" })
+        </div>
+    </div>
+
+    <!-- REQUIRED SCRIPTS -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/JsScripts/DelTiquete.js"></script>
+</body>
+</html>
