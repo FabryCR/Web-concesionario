@@ -1,0 +1,85 @@
+CREATE DATABASE Proyecto_PrograAvanzada; --Correr esta linea sola al inicio de la ejecucion
+
+USE [Proyecto_PrograAvanzada] --Correr de aca para abajo todo el codigo para crear las tablas y llenar los datos
+
+/*Reinicio creacion de Tablas*/
+CREATE TABLE Rol(
+	IdRol int identity(1,1) NOT NULL,
+	Nombre varchar(50) NOT NULL,
+PRIMARY KEY (IdRol)
+);
+
+CREATE TABLE Vehiculo(
+	IdVehiculo int identity(1,1) NOT NULL,
+	Marca varchar(50) NOT NULL,
+	Modelo varchar(50) NOT NULL,
+	Color varchar(50) NOT NULL,
+	Placa varchar(50) NULL,
+	Anio int NOT NULL,
+	Tipo varchar(50),
+PRIMARY KEY (IdVehiculo) 
+);
+
+CREATE TABLE Usuario(
+	IdUsuario int identity(1,1) NOT NULL,
+	NombUsuario varchar(50) NOT NULL,
+	Identificacion varchar(50) NOT NULL,
+	Nombre varchar(50) NOT NULL,
+	Apellido varchar(50) NOT NULL,
+	Correo varchar(50) NOT NULL,
+	Telefono varchar(50) NOT NULL,
+	Contra varchar(50) NOT NULL,
+	Rol int NOT NULL,
+PRIMARY KEY (IdUsuario),
+FOREIGN KEY (Rol) references Rol (IdRol)
+);
+
+CREATE TABLE Factura(
+	IdFactura int identity(1,1) NOT NULL,
+	IdUsuario int NOT NULL,
+	IdVehiculo int NOT NULL,
+	FechaEntrega datetime NOT NULL,
+	FechaFactura datetime NOT NULL,
+	Total decimal(18, 0) NOT NULL,
+PRIMARY KEY (IdFactura),
+FOREIGN KEY (IdUsuario) references Usuario (IdUsuario),
+FOREIGN KEY (IdVehiculo) references Vehiculo (IdVehiculo)
+);
+
+CREATE TABLE Tiquete(
+	IdTiquete int identity(1,1) NOT NULL,
+	IdUsuario int NOT NULL,
+	IdVehiculo int NOT NULL,
+	FechaDevolucion datetime NOT NULL,
+	FechaTiquete datetime NOT NULL,
+	Total decimal(18, 0) NOT NULL,
+Primary Key (IdTiquete),
+FOREIGN KEY (IdUsuario) references Usuario (IdUsuario),
+FOREIGN KEY (IdVehiculo) references Vehiculo (IdVehiculo)
+);
+
+/*Insert de datos en las tablas*/
+INSERT INTO Rol(Nombre)
+VALUES
+('Admin'),
+('Funcionario');
+
+INSERT INTO Usuario(NombUsuario,Identificacion,Nombre,Apellido, Correo,Telefono,Contra,Rol)
+VALUES
+('Fabry','117110514','Fabrizio','Salas','fab.salas@flipcars.cr','85851245','fab123','1'),
+('Dani','117870580','Daniel','Solis','Dan.Solis@flipcars.cr','86412589','Dan123','1'),
+('Alex','118300904','Alexander','Chavarria','Ale.Chavarria@flipcars.cr','86230786','Ale123','2'),
+('Yulianna','116080880','Yulianna','Jimenez','Yul.Jimenez@flipcars.cr','84560472','Yul123','2');
+
+INSERT INTO Vehiculo(Marca,Modelo,Color,Placa,Anio,Tipo)
+VALUES
+('Toyota','Corolla','Negro','-','2022','Venta'),
+('Toyota','Yaris','Blanco','-','2022','Venta'),
+('Hyundai','Tucson','Azul','BBB-000','2021','Alquiler'),
+('Toyota','Rush','Gris','TYT-265','2020','Alquiler');
+
+/*Revision*/
+Select * from Rol;
+Select * from Usuario;
+Select * from Vehiculo;
+
